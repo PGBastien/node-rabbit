@@ -1,6 +1,6 @@
-# RabbitMQ (docker)
+# RabbitMQ Server and management 
 
-## Server
+## Server 
 docker run -d --hostname my-rabbit --name the-rabbit -p 5672:5672 rabbitmq:3
 
 ## http management
