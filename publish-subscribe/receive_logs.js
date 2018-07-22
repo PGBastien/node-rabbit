@@ -2,7 +2,7 @@
 
 var amqp = require('amqplib');
 
-amqp.connect('amqp://moderation:moderation@localhost').then(function(conn) {
+amqp.connect('amqp://moderation:moderation@localhost/moderation').then(function(conn) {
     process.once('SIGINT', function() { conn.close(); });
     return conn.createChannel().then(function(ch) {
         var ok = ch.assertExchange('logs', 'direct', {durable: true});
