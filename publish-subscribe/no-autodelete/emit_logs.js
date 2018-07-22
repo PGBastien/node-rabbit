@@ -2,7 +2,7 @@
 
 var amqp = require('amqplib');
 // Connect to RabbitMQ Server
-amqp.connect('amqp://localhost').then(function(conn) {
+amqp.connect('amqp://moderation:moderation@localhost').then(function(conn) {
     return conn.createChannel().then(function(ch) {
         // Exchange logs
         var ex = 'logs';
