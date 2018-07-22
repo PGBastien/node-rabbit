@@ -2,10 +2,10 @@
 
 var amqp = require('amqplib');
 
-amqp.connect('amqp://bastien:bastien@localhost/%2Fvh-moderation').then(function(conn) {
+amqp.connect('amqp://localhost').then(function(conn) {
     process.once('SIGINT', function() { conn.close(); });
     return conn.createChannel().then(function(ch) {
-        var ok = ch.assertExchange('logs', 'fanout', {durable: false});
+        var ok = ch.assertExchange('logs', 'direct', {durable: true});
         ok = ok.then(function() {
             return ch.assertQueue('', {exclusive: true});
         });
