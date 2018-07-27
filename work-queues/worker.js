@@ -21,7 +21,7 @@ amqp.connect('amqp://moderation:moderation@localhost/moderation').then(function(
             console.log(" [x] Task takes %d seconds", secs);
             setTimeout(function() {
                 console.log(" [x] Done");
-                ch.ack(msg);
+                //ch.ack(msg);  // If ack message, message is not requeue
             }, secs * 1000);
         }
     });
