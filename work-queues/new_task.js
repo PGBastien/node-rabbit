@@ -5,10 +5,10 @@ var amqp = require('amqplib');
 
 // ssl options
 var opts = {
-    cert: fs.readFileSync('cert.pem'),
-    key: fs.readFileSync('key.pem'),
+    cert: fs.readFileSync('../certifs/ssl/client/cert.pem'),
+    key: fs.readFileSync('../certifs/ssl/client/key.pem'),
     passphrase: 'TheRabbitPass',
-    ca: [fs.readFileSync('cacert.pem')]
+    ca: [fs.readFileSync('../certifs/ssl/ca/cacert.pem')]
 };
 
 amqp.connect('amqps://moderation:moderation@skynet/moderation', opts).then(function(conn) {
