@@ -1,10 +1,17 @@
-#!/usr/bin/env node
-// Post a new task to the work queue
+const fs = require('fs');
 
 var datetime = require('node-datetime');
 var amqp = require('amqplib');
 
-amqp.connect('amqp://moderation:moderation@localhost/moderation').then(function(conn) {
+// ssl options
+var opts = {
+    cert: fs.readFileSync('cert.pem'),
+    key: fs.readFileSync('key.pem'),
+    passphrase: 'TheRabbitPass',
+    ca: [fs.readFileSync('cacert.pem')]
+};
+
+amqp.connect('amqps://moderation:moderation@skynet/moderation', opts).then(function(conn) {
     return conn.createChannel().then(function(ch) {
         // Date time
         var dt = datetime.create();
